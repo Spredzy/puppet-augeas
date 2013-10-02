@@ -36,7 +36,7 @@ class augeas (
   if $::osfamily == 'RedHat' {
 
     yumrepo {'augeas-yanisguenane':
-      baseurl         => "http://yum.augeas.yanisguenane.fr/el/${::ver}/${::arch}/",
+      baseurl         => "http://yum.augeas.yanisguenane.fr/el/${ver}/${arch}/",
       failovermethod  => 'priority',
       enabled         => '1',
       gpgcheck        => '0',
