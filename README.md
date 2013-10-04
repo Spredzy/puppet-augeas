@@ -1,4 +1,4 @@
-puppet-augeas [![Build Status](https://travis-ci.org/Spredzy/puppet-augeas.png)](https://travis-ci.org/Spredzy/puppet-augeas)
+#puppet-augeas [![Build Status](https://travis-ci.org/Spredzy/puppet-augeas.png)](https://travis-ci.org/Spredzy/puppet-augeas)
 
 =============
 
