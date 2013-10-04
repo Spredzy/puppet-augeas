@@ -20,31 +20,37 @@
 # Copyright 2013 Yanis Guenane
 #
 class augeas (
-  $devel = false,
+  $devel    = false,
+  $enabled  = 1,
   ) {
 
   $ver = $::operatingsystemmajrelease
   $arch = $::architecture
 
-  if $devel {
+  if $devel and $enabled == 1 {
     $packages = ['augeas', 'augeas-libs', 'augeas-devel']
   }
-  else {
+  elsif !$devel and $enabled == 1 {
     $packages = ['augeas', 'augeas-libs']
   }
+  else {
+    $packages = []
+  }
+
 
   if $::osfamily == 'RedHat' {
 
     yumrepo {'augeas-yanisguenane':
       baseurl         => "http://yum.augeas.yanisguenane.fr/el/${ver}/${arch}/",
       failovermethod  => 'priority',
-      enabled         => '1',
+      enabled         => $enabled,
       gpgcheck        => '0',
       descr           => 'Last version of Augeas based on GitHub repository',
     } ->
     package {$packages:
-      ensure => installed,
+      ensure  => installed,
     }
+
 
   }
   else {
