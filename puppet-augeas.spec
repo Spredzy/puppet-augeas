@@ -23,7 +23,7 @@ on the GitHub sources.
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/etc/puppet/modules/augeas/
-cp -r * $RPM_BUILD_ROOT/etc/puppet/modules/augeas/
+cp -r manifests $RPM_BUILD_ROOT/etc/puppet/modules/augeas/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -31,6 +31,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{_sysconfdir}/puppet/modules/*
+%doc CHANGELOG README.md LICENSE
 
 %changelog
 * Fri Oct 4 2013  Yanis Guenane  <yguenane@gmail.com>  0.1.0
