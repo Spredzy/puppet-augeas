@@ -6,13 +6,10 @@ A Puppet module that installs augeas latest GitHub version, from the YUM reposit
 
 # Parameters
 
-* devel (boolean)
+* devel (true|false)
 
 Indicate if augeas-devel package should be installed (default: false)
 
-* enabled (0|1)
-
-Indicate if the `augeas-yaniguenane` repo should be enabled (default: 1)
 
 # Usage
 
@@ -24,12 +21,6 @@ or
       devel => true,
     }
 
-or
-
-    class {'augeas' :
-      enabled => 0,
-    }
-
 # Compatibility
 
-This version works only on EL6 OS and x86_64 architecture. At the moment of this writing those are the only rpm generated.
+This module work exclusively on Fedora and RedHat (and its derivative) platforms, for both 32 Bits and 64 Bits platforms.
