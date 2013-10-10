@@ -1,5 +1,5 @@
 Name:           puppet-augeas
-Version:        0.1.0
+Version:        0.1.1
 Release:        1%{?dist}
 Summary:        A puppet module that installs a nightly build of augeas
 
@@ -9,7 +9,7 @@ URL:            http://forge.puppetlabs.com/yguenane/augeas
 Source0:        http://forge.puppetlabs.com/yguenane/augeas/%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-Requires:       puppet
+Requires:       puppet puppet-stdlib puppet-ygrpms
 
 %description
 A puppet module that installs a nightly build of the Augeas project based
@@ -34,6 +34,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGELOG README.md LICENSE
 
 %changelog
+* Fri Oct 10 2013  Yanis Guenane  <yguenane@gmail.com>  0.1.1
+- Remove yum repo instanciation from this module to its own module
+- Add dependence to yguenane/ygrpms and puppetlabs/stdlib
+
 * Fri Oct 4 2013  Yanis Guenane  <yguenane@gmail.com>  0.1.0
 - Initial version
 

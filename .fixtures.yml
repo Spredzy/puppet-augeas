@@ -1,3 +1,6 @@
 fixtures:
+  repositories:
+    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib"
+    ygrpms: "git://github.com/Spredzy/puppet-ygrpms"
   symlinks:
     augeas: "#{source_dir}"

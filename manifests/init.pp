@@ -21,40 +21,27 @@
 #
 class augeas (
   $devel    = false,
-  $enabled  = 1,
   ) {
 
-  $ver = $::operatingsystemmajrelease
-  $arch = $::architecture
+  require stdlib
+  require ygrpms
 
-  if $devel and $enabled == 1 {
-    $packages = ['augeas', 'augeas-libs', 'augeas-devel']
-  }
-  elsif !$devel and $enabled == 1 {
-    $packages = ['augeas', 'augeas-libs']
-  }
-  else {
-    $packages = []
-  }
+  validate_bool($devel)
 
+  $packages = $devel ? {
+    true  =>  ['augeas', 'augeas-libs', 'augeas-devel'],
+    false =>  ['augeas', 'augeas-libs'],
+  }
 
   if $::osfamily == 'RedHat' {
 
-    yumrepo {'augeas-yanisguenane':
-      baseurl         => "http://yum.augeas.yanisguenane.fr/el/${ver}/${arch}/",
-      failovermethod  => 'priority',
-      enabled         => $enabled,
-      gpgcheck        => '0',
-      descr           => 'Last version of Augeas based on GitHub repository',
-    } ->
     package {$packages:
       ensure  => installed,
     }
 
-
   }
   else {
-    fail('Your Operating System is not supported')
+    fail('Sorry, your Operating System is not supported, only RedHat based (and Fedora) linux distributions are supported')
   }
 
 }
